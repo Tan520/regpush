@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<RollingRandomAccessFile
+			name="rollingRandomAccessFile"
+			fileName="${sys:catalina.home}/../RegPush-logs/today.log"
+			filePattern="${sys:catalina.home}/../RegPush-logs/%d{yyyy-MM}/%d{yyyy-MM-dd}.log">
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level[%thread] - %msg%xEx%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+			<DefaultRolloverStrategy max="367" />
+		</RollingRandomAccessFile>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO">
+			<AppenderRef ref="rollingRandomAccessFile" />
+		</Root>
+	</Loggers>
+</Configuration>
